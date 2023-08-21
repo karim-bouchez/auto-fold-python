@@ -6,7 +6,7 @@ import * as vscode from 'vscode';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
-        vscode.workspace.onDidOpenTextDocument(onDocumentOpen)
+        vscode.window.onDidChangeActiveTextEditor(onDocumentOpen)
     );
 
     context.subscriptions.push(
@@ -26,10 +26,11 @@ export function activate(context: vscode.ExtensionContext) {
 // This method is called when your extension is deactivated
 export function deactivate() { }
 
-function onDocumentOpen(document: vscode.TextDocument) {
-    if (document.languageId !== 'python') return
+function onDocumentOpen(editor?: vscode.TextEditor) {
+    if (!editor) return
+    if (editor.document.languageId !== 'python') return
 
-    foldAllProperty(document)
+    foldAllProperty(editor.document)
 }
 
 function foldAllProperty(document?: vscode.TextDocument) {
