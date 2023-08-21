@@ -1,7 +1,8 @@
 {
   "name": "auto-fold-python",
+  "publisher": "karimbouchez",
   "displayName": "auto-fold-python",
-  "description": "Fold all `@property` in python by default",
+  "description": "Auto-fold all `@property` in Python files by default",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.81.0"
